@@ -59,8 +59,8 @@ def K_albero(ls_mat):
 	if len(ls_mat) != 7:
 		print("Expected 7 matrices")
 		return 0
-
-	K = np.zeros((15,15),dtype=float)
+  
+	K = np.matrix(np.zeros((15,15)),dtype=float)
 	# First matrix
 	K[0:4,0:4] = ls_mat[0]
 	
@@ -72,8 +72,8 @@ def K_albero(ls_mat):
 	
 	# Fourth
 	K[6:9,6:9] += ls_mat[3][0:3,0:3]
-	K[[6,7,8,10],10] += ls_mat[3][:,3]
-	K[10,[6,7,8,10]] += ls_mat[3][3,:]
+	K[[6,7,8,10],10] = (K[[6,7,8,10],10] + ls_mat[3][:,3]).reshape((4))
+	K[10,[6,7,8,10]] = (K[10,[6,7,8,10]] + ls_mat[3][3,:]).reshape((4))
 	
 	# Fifth
 	K[4:6,4:6] += ls_mat[4][0:2,0:2]
@@ -82,10 +82,10 @@ def K_albero(ls_mat):
 	K[12:14,4:6] += ls_mat[4][2:4,0:2]
 	
 	# Sixth
-	K[8:13,8:13] += switch(ls_mat[5],[1,0])
+	K[8:12,8:12] += switch(ls_mat[5],[1,0])
 
 	# Seventh
-	K[[12,14],12] += ls_mat[6][:,0]
-	K[[12,14],14] += ls_mat[6][:,1]
+	K[[12,14],12] = (K[[12,14],12] + ls_mat[6][:,0]).reshape((2))
+	K[[12,14],14] = (K[[12,14],14] + ls_mat[6][:,1]).reshape((2))
 
 	return K
