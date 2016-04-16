@@ -34,3 +34,9 @@ F=np.dot(K,f)
 #print E, I, l
 print f
 print F
+
+x = y = np.arange(0.0,5.0,1.0)
+z=y=np.array([[1.0,2.0,8.7],[2.3,4.5,4.4]])
+#np.savetxt('test.out', x, delimiter=',')   # X is an array
+#np.savetxt('test.out', (x,y,z))   # x,y,z equal sized 1D arrays
+np.savetxt('test.txt', (z,y), fmt='%1.4e')   # use exponential notation
