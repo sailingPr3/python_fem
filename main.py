@@ -9,14 +9,18 @@ A = np.array([50.3,50.3]) # 6,7
 l = np.array([1000,2000,3000,1000,750,0,3000],dtype=float) # 1-5,7
 l[5] = np.sqrt(np.square(l[2]) + np.square(l[4]))
 
+# Our rotation angles
+theta = -np.arccos(l[2]/l[5]) - np.radians(180)
+alpha = np.radians(270)
+
 ls_mat = []
 for i in range(5):
     ls_mat.append(
-        beam_rigidity(E[i],J[i],l[i]) if i!=4 else beam_rigidity(E[i],J[i],l[i],np.radians(270))
+        beam_rigidity(E[i],J[i],l[i]) if i!=4 else beam_rigidity(E[i],J[i],l[i],alpha)
         )
-theta = -np.arccos(l[2]/l[5]) - np.radians(180)
 ls_mat.append(truss_rigidity(E[5],A[0],l[5],theta))
 ls_mat.append(truss_rigidity(E[6],A[1],l[6]))
 K = K_albero(ls_mat)
+np.savetxt("K_albero.txt",K,fmt="%.4e")
 
 print K
