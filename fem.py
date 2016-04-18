@@ -33,8 +33,8 @@ def switch(nm_mat, ls_perm):
 	return switched
 
 def beam_rigidity(E,J,l,theta = 0):
-	M = 12. * E * J / (l * 3)
-	T = 6. * E * J / (l * 2)
+	M = 12. * E * J / (l ** 3)
+	T = 6. * E * J / (l ** 2)
 	S = 2. * E * J / (l)
 	mat = np.matrix(
 		[
