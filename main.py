@@ -7,7 +7,7 @@ J2 = np.array([3.15,3.15,3.15,3.15,0],dtype=float)*100000 # 1 - 4
 J = J1 + J2
 A = np.array([1534,1534,1534,1534,500,7.1,7.1]) # 6,7
 l = np.array([1000,2000,3000,1000,750,0,3000],dtype=float) # 1-5,7
-l[5] = np.sqrt(np.square(l[2]) + np.square(l[4]))
+l[5] = np.sqrt(np.square(l[2]) + np.square(l[4]+l[3]))
 
 F=np.zeros(19)
 f=np.zeros(19)
