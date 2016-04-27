@@ -31,7 +31,7 @@ K = K_albero(ls_mat)
 K_r=np.linalg.inv(K[2:19,2:19])
 
 f[2:19]=K_r.dot(F[2:19])
-F=K.dot(f)
+F=K.dot(f).transpose()
 
 np.savetxt("F.txt",F,fmt="%.4e")
 np.savetxt("Kr_albero.txt",K_r,fmt="%.4e")
