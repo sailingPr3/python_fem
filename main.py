@@ -28,9 +28,9 @@ ls_mat.append(truss_rigidity(E[5],A[5],l[5],theta))
 ls_mat.append(truss_rigidity(E[6],A[6],l[6]))
 
 K = K_albero(ls_mat)
-K_r=np.linalg.inv(K[2:19,2:19])
+K_r=np.linalg.inv(K[3:18,3:18])
 
-f[2:19]=K_r.dot(F[2:19])
+f[3:18]=K_r.dot(F[3:18])
 F=K.dot(f).transpose()
 
 np.savetxt("F.txt",F,fmt="%.4e")
